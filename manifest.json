@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Zillow Tools",
+    "version": "0.1",
+    "description": "An extension to add price per square foot to zillow listing summaries",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.zillow.com/*"
+            ],
+            "js": ["content.js"]
+        }
+    ]
+}
