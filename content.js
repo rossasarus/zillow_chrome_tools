@@ -1,23 +1,12 @@
+// what to do when a mutation is detected.
 var mutationObserver = new MutationObserver(function(mutations) {
-  // Stops the MutationObserver from listening for changes.
-  // mutationObserver.disconnect();
-  
   console.log('mutation detected');
   callback()
-
-    // // Starts listening for changes in the root HTML element of the page.
-    // mutationObserver.observe(document.documentElement, {
-    //   attributes: true,
-    //   characterData: true,
-    //   childList: true,
-    //   subtree: true,
-    //   attributeOldValue: true,
-    //   characterDataOldValue: true
-    // });
-
 });
 
 var callback = function(){
+    // Stops the MutationObserver from listening for changes.
+    // Otherwise this snake will eat it's tail
     mutationObserver.disconnect();
     let cards = document.getElementsByClassName('list-card-heading')
     let regex_1 = /,/gi
@@ -44,7 +33,7 @@ var callback = function(){
         card.getElementsByClassName('list-card-details')[0].appendChild(node);     // Append <li> to <ul> with
       }
     }
-    // Starts listening for changes in the root HTML element of the page.
+    // Starts / Restarts listening for changes.
     mutationObserver.observe(document.documentElement, {
       attributes: true,
       characterData: true,
